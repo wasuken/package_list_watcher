@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## テーブル定義
 
-Things you may want to cover:
+### servers
 
-* Ruby version
+パッケージ取得先のサーバ情報テーブル
 
-* System dependencies
+* name
 
-* Configuration
+* pac_type
 
-* Database creation
+* arch
 
-* Database initialization
+### packages
 
-* How to run the test suite
+取得したパッケージ情報
 
-* Services (job queues, cache servers, search engines, etc.)
+* name
 
-* Deployment instructions
+* version
 
-* ...
+### server_packages
+
+servers -* packages
+
+* server_id
+
+* package_id
+
+* version
+
+### latest_packacges
+
+* package_id
+
+* version
