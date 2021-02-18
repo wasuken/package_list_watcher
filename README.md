@@ -28,10 +28,6 @@ servers -* packages
 
 * package_id
 
-* version
-
 ### latest_packacges
 
 * package_id
-
-* version
