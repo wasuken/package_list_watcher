@@ -6,5 +6,6 @@ class CreateCaptures < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :servers, [:server_id, :package_version_id], unique: true
   end
 end

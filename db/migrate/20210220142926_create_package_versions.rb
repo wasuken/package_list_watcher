@@ -6,5 +6,6 @@ class CreatePackageVersions < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :servers, [:package_id, :version], unique: true
   end
 end
