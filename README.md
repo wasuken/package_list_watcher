@@ -8,6 +8,11 @@
 
 * name
 
+* pac_type
+
+	本当はpackageか、captureごとに依存するんだろうけど、サーバに依存させることで、
+	無駄な更新を減らす。というわけでサーバは名前ごとではなく、サーバとパッケージ管理システムで一意とする。
+
 * other_info
 
   なんかつめこみたいときにいれるやつ。正直いらんかも。
@@ -18,6 +23,8 @@
 
 * name
 
+* description
+
 ### package_versions
 
 パッケージのバージョン情報
@@ -25,8 +32,6 @@
 * package_id
 
 * version
-
-* capture_id
 
 ### captures
 
