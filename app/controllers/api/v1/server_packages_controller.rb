@@ -1,4 +1,5 @@
 class Api::V1::ServerPackagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     name = params[:name]
     srv = Server.find_by(name: name)
@@ -10,20 +11,24 @@ class Api::V1::ServerPackagesController < ApplicationController
   end
 
   def create
-    j = request.body.read.to_json
+    j = JSON.parse(request.body.read)
     name = j['Name']
-    type = j['PacManType']
+    type = j['PackManType']
     arch = j['Arch']
-    srv = Serever.create(name: name, pac_type: type, arch: arch)
+    srv = Server.create(name: name, pac_type: type, arch: arch)
 
+    srv_packs = []
     # pack
     # keys: Name, Versionz2
     j['Packs'].each do |p|
       pac = Package.create(name: p['Name'], version: p['Version'])
-      ServerPackage.create(
+      srv_packs << {
         server_id: srv.id,
-        package_id: pac.id
-      )
+        package_id: pac.id,
+        created_at: Time.current,
+        updated_at: Time.current
+      }
     end
+    ServerPackage.insert_all(srv_packs)
   end
 end

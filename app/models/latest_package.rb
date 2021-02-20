@@ -1,3 +1,3 @@
 class LatestPackage < ApplicationRecord
-  has_one :packages
+  has_one :package
 end
